@@ -7,7 +7,18 @@
 </head>
 
 <body>
-    {% block content %} {% endblock %}
+    <!--Navbar content-->
+
+    <nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="{{url_for('find_config')}}" class="brand-logo center">Laptop request app</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="{{url_for('edit_laptops')}}">Edit Laptop List</a></li>
+                <li><a href="{{url_for('edit_softwares')}}">Edit Software List</a></li>
+            </ul>
+        </div>
+{% block content %} {% endblock %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
