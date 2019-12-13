@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row center">
-    <div class="nav-content">
-        <ul class="tabs tabs-transparent">
-            <li class="tab"><a class="active" href="{{url_for('get_laptops')}}">Laptops</a></li>
-            <li class="tab"><a href="{{url_for('find_config')}}">Find Best Config</a></li>
-            <li class="tab"><a href="{{url_for('get_softwares')}}">Softwares</a></li>
-        </ul>
-    </div>
+<nav class="navbar navbar-dark bg-secondary">
+    <a class="navbar-brand" href="{{url_for('get_laptops')}}">Laptops</a>
+    <a class="navbar-brand" href="{{url_for('find_config')}}">Best Config</a>
+    <a class="navbar-brand" href="{{url_for('get_softwares')}}">Softwares</a>
 </nav>
-</div>
+
+{% for laptop in Laptops %}
+  {{laptop.model_name}}
+  {{laptop.model_number}}
+{% endfor %}
 {% endblock content %}
     
