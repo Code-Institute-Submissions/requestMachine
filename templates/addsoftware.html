@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 <nav class="navbar navbar-dark bg-primary">
-    <a class="navbar-brand" href="{{url_for('get_laptops')}}">Laptops</a>
-    <a class="navbar-brand" href="{{url_for('find_config')}}">Best Config</a>
     <a class="navbar-brand" href="{{url_for('get_softwares')}}">Softwares</a>
-</nav>
+    <a class="navbar-brand" href="{{url_for('find_config')}}">Best Config</a>
+    <a class="navbar-brand" href="{{url_for('get_laptops')}}">Laptops</a>
+  </nav>
 {% endblock content %}
