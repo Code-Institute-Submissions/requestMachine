@@ -12,9 +12,50 @@ app.config['MONGO_URI'] = 'mongodb+srv://dbAdmin:7sohc2fjtQp4kEgY@myfirstcluster
 mongo = PyMongo(app)
 
 @app.route('/')
+@app.route('/find_config')
+def find_config():
+    return render_template("findconfig.html")
+
+
 @app.route('/get_laptops')
 def get_laptops():
     return render_template("laptops.html", Laptops=mongo.db.laptops.find())
+
+
+
+@app.route('/get_softwares')
+def get_softwares():
+    return render_template("softwares.html", Softwares=mongo.db.softwares.find())
+
+
+
+@app.route('/add_laptop')
+def add_laptop():
+    return render_template("addlaptop.html")
+
+
+
+@app.route('/add_software')
+def add_software():
+    return render_template("addsoftware.html")
+
+
+
+@app.route('/edit_laptops')
+def edit_laptops():
+    return render_template("editlaptops.html")
+
+
+@app.route('/edit_softwares')
+def edit_softwares():
+    return render_template("editsoftwares.html")
+    
+
+@app.route('/insert_laptop')
+def insert_laptop():
+    Laptops = mongo.db.laptops
+    Laptops.insert_one(request.form.to_dict())
+    return redirect(url_for('get_laptops'))
 
 
 if __name__ == '__main__':

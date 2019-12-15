@@ -4,5 +4,285 @@
     <a class="navbar-brand" href="{{url_for('get_softwares')}}">Softwares</a>
     <a class="navbar-brand" href="{{url_for('find_config')}}">Best Config</a>
     <a class="navbar-brand" href="{{url_for('get_laptops')}}">Laptops</a>
-  </nav>
+</nav>
+<div class="wrapper" id="instructions">
+    <p>Please give all the informations of the machine to add to our database.</p>
+</div>
+<div class="container-fluid">
+    <form action="{{ url_for('insert_laptop') }}" method="POST">
+
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            Machine Model Information
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-5">
+                                <label for="model_name">Model Name:</label>
+                                <input class="form-control" type="text" placeholder="Model Name" name="model_name">
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-5">
+                                <label for="model_number">Model Number:</label>
+                                <input class="form-control" type="text" placeholder="Model Number" name="model_number">
+                            </div>
+                            <div class="col-12 col-md-2 col-lg-2">
+                                <label for="usr">Screen Size:</label>
+                                <input class="form-control" type="number" step="0.1" placeholder="Screen size"
+                                    name="scree_size">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Processor information
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-6">
+                                <label for="proc_name">Processor Name:</label>
+                                <input class="form-control" type="text" placeholder="Processor Name" name="proc_name">
+                            </div>
+
+                            <div class="col-12 col-md-2 col-lg-2">
+                                <label for="proc_gen">Generation:</label>
+                                <input class="form-control" type="number" placeholder="Generation" name="proc_gen">
+                            </div>
+
+                            <div class="col-12 col-md-2 col-lg-2">
+                                <label for="proc_cores">Processor cores:</label>
+                                <input class="form-control" type="number" name="proc_cores">
+                            </div>
+
+                            <div class="col-12 col-md-2 col-lg-2">
+                                <label for="proc_max">Max frequency:</label>
+                                <input class="form-control" type="number" step="0.1" placeholder="MHz" name="proc_max">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Installed Memory
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <label for="ram_size">Installed memory size:</label>
+                                <input class="form-control" type="number" placeholder="Memory installed in GB"
+                                    name="ram_size">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingFour">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Discrete Graphics Card
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-2">
+                                <label class="form-check-label" for="gpu">
+                                    Is there a discrete graphic card in the machine?
+                                </label>
+                                <input class="form-check-input large" type="checkbox" value="" id="gpu">
+                                
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-2">
+                                <label for="gpu_model">Graphics card model name:</label>
+                                <input class="form-control" type="text" placeholder="Graphics card model name"
+                                    name="gpu_model">
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-2">
+                                <label for="gpu_ram">Graphics card memory in GB:</label>
+                                <input class="form-control" type="number" step="0.5"
+                                    placeholder="Graphics card memory in GB" name="gpu_ram">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingFive">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Main Connection Ports
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-4 col-md-6 col-lg-2">
+                                <label for="usb31">Usb 3.1 ports:</label>
+                                <input class="form-control" type="number" value="0"
+                                    placeholder="Number of Usb 3.1 connectors" name="usb31">
+                            </div>
+
+                            <div class="col-4 col-md-6 col-lg-2">
+                                <label for="usb3">Usb 3 ports:</label>
+                                <input class="form-control" type="number" value="0"
+                                    placeholder="Number of Usb 3 connectors" name="usb3">
+                            </div>
+
+                            <div class="col-4 col-md-6 col-lg-2">
+                                <label for="usb2">Usb 2 ports:</label>
+                                <input class="form-control" type="number" value="0"
+                                    placeholder="Number of Usb 3 connectors" name="usb2">
+                            </div>
+
+                            <div class="col-4 col-md-4 col-lg-2">
+                                <label for="eth">Ethernet ports:</label>
+                                <input class="form-control" type="number" value="0"
+                                    placeholder="Number of Ethernet connectors" name="eth">
+                            </div>
+
+                            <div class="col-4 col-md-4 col-lg-2">
+                                <label for="usb2">VGA ports:</label>
+                                <input class="form-control" type="number" value="0" name="vgap">
+                            </div>
+
+                            <div class="col-4 col-md-4 col-lg-2">
+                                <label for="hdmi">HDMI ports:</label>
+                                <input class="form-control" type="number" value="0" name="hdmi">
+                            </div>
+
+                            <div class="col-4 col-md-4 col-lg-2">
+                                <label for="dp">Display Ports:</label>
+                                <input class="form-control" type="number" value="0" name="dp">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingSix">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            Other
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="npad">
+                                    <label class="form-check-label" for="npad">
+                                        Num Pad?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="fprint">
+                                    <label class="form-check-label" for="fprint">
+                                        Fingerprint sensor?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="wifi">
+                                    <label class="form-check-label" for="wifi">
+                                        Does the machine have Wifi?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="jack">
+                                    <label class="form-check-label" for="jack">
+                                        Does the machine have a 3.5 mm jack connector?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="true" id="mic">
+                                    <label class="form-check-label" for="mic">
+                                        Does the machine have microphone?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="dvd">
+                                    <label class="form-check-label" for="dvd">
+                                        Does the machine have optical drive?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingSeven">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                                data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                                Copy a link from the web to an image to this computer.
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <label for="vga_model">Link to an image of the model:</label>
+                                <input class="form-control" type="text" placeholder="Link to an image of the model"
+                                    name="img_source">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Submit-btns" style="float: right;">
+            <button type="submit" class="btn btn-success" name="action">Add machine</button>
+            <button type="button" class="btn btn-danger" href="{{url_for('get_laptops')}}" >Cancel</button>
+        </div>
+        
+    </form>
+</div>
+
+
+
+
 {% endblock content %}
