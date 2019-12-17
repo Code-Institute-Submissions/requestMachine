@@ -43,12 +43,12 @@ def add_software():
 
 @app.route('/edit_laptops')
 def edit_laptops():
-    return render_template("editlaptops.html")
+    return render_template("editlaptops.html", Laptops=mongo.db.laptops.find())
 
 
 @app.route('/edit_softwares')
 def edit_softwares():
-    return render_template("editsoftwares.html")
+    return render_template("editsoftwares.html", Softwares=mongo.db.softwares.find())
     
 
 @app.route('/insert_laptop', methods=['POST'])
