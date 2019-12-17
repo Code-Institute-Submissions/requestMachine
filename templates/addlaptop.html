@@ -83,7 +83,7 @@
                     <h5 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                             data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Installed Memory
+                            Installed Memory and Hard Drive
                         </button>
                     </h5>
                 </div>
@@ -95,6 +95,10 @@
                                 <input class="form-control" type="number" placeholder="Memory installed in GB"
                                     name="ram_size">
                             </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <label for="hard_drive">Hard Drive</label>
+                                <input class="form-control" type="number" placeholder="Hard drive in GB" name="hard_drive">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,20 +108,13 @@
                     <h5 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                             data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                            Discrete Graphics Card
+                            If There is a discrete graphics card, please add details
                         </button>
                     </h5>
                 </div>
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-2">
-                                <label class="form-check-label" for="gpu">
-                                    Is there a discrete graphic card in the machine?
-                                </label>
-                                <input class="form-check-input large" type="checkbox" value="" id="gpu">
-
-                            </div>
                             <div class="col-sm-12 col-md-6 col-lg-2">
                                 <label for="gpu_model">Graphics card model name:</label>
                                 <input class="form-control" type="text" placeholder="Graphics card model name"

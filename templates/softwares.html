@@ -5,9 +5,10 @@
   <a class="navbar-brand" href="{{url_for('find_config')}}">Best Config</a>
   <a class="navbar-brand" href="{{url_for('get_laptops')}}">Laptops</a>
 </nav>
-{% for software in Softwares %}
+
 <div class="container-fluid">
   <div class="row">
+  {% for software in Softwares %}
     <div class="col-sm-12 col-md-6 col-lg-4">
       <div class="card" style="width: 18rem;">
         <img src="{{software.img_source}}" class="card-img-top" alt="Software image">
@@ -19,16 +20,10 @@
           <h6 class="card-title">Memory and Hard Drive</h6>
           <p>{{ software.ram_size }}Gb memory</p>
           <p>{{ software.hard_drive }}Gb Hard drive</p>
-          {% if software[8] > 0: %}
-            <h6 class="card-title">Graphics Memory</h6>
-            <p>Minimum {{software.gpu_ram}}Gb Graphics card</p>
-          {% endif %}
-          
-          <a data-toggle="collapse" href="#collapseExample">Laptop Datasheet</a>
         </div>
       </div>
     </div>
+  {% endfor %}
+{% endblock content %}
   </div>
 </div>
-{% endfor %}
-{% endblock content %}
