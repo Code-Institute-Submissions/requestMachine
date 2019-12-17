@@ -6,7 +6,7 @@
   <a class="navbar-brand" href="{{url_for('get_laptops')}}">Laptops</a>
 </nav>
 
-<form action="{{ url_for('insert_software') }}" method="POST">
+<form class="needs-validation" action="{{ url_for('insert_software') }}" method="POST">
   <div class="accordion" id="accordionExample">
     <div class="card">
       <div class="card-header" id="headingOne">
@@ -23,11 +23,11 @@
           <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-5">
               <label for="software_name">Software Name:</label>
-              <input class="form-control" type="text" name="software_name">
+              <input class="form-control" type="text" name="software_name" required>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-5">
               <label for="produced_by">Produced by:</label>
-              <input class="form-control" type="text" name="produced_by">
+              <input class="form-control" type="text" name="produced_by" required>
             </div>
           </div>
         </div>
@@ -47,22 +47,16 @@
           <div class="row">
             <div class="col-12 col-md-6 col-lg-6">
               <label for="proc_gen">Processor Generation</label>
-              <input class="form-control" type="text" name="proc_gen">
+              <input class="form-control" type="text" name="proc_gen" required>
             </div>
-
-            <div class="col-12 col-md-2 col-lg-2">
-              <label for="proc_gen">Cores:</label>
-              <input class="form-control" type="number" name="proc_cores">
-            </div>
-
             <div class="col-12 col-md-2 col-lg-2">
               <label for="proc_cores">Processor cores:</label>
-              <input class="form-control" type="number" name="proc_cores">
+              <input class="form-control" type="number" name="proc_cores" required>
             </div>
 
             <div class="col-12 col-md-2 col-lg-2">
               <label for="proc_max">Min frequency:</label>
-              <input class="form-control" type="number" step="0.1" placeholder="GHz" name="proc_min">
+              <input class="form-control" type="number" step="0.1" placeholder="GHz" name="proc_min" required>
             </div>
           </div>
         </div>
@@ -82,11 +76,11 @@
           <div class="row">
             <div class="col-12 col-md-6 col-lg-4">
               <label for="ram_size">Installed memory size:</label>
-              <input class="form-control" type="number" placeholder="Memory installed in GB" name="ram_size">
+              <input class="form-control" type="number" placeholder="Memory installed in GB" name="ram_size" required>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
               <label for="hard_drive">Hard Drive</label>
-              <input class="form-control" type="number" placeholder="Hard drive in GB" name="hard_drive">
+              <input class="form-control" type="number" placeholder="Hard drive in GB" name="hard_drive" required>
             </div>
           </div>
         </div>
@@ -97,7 +91,7 @@
         <h5 class="mb-0">
           <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour"
             aria-expanded="false" aria-controls="collapseFour">
-            Discrete Graphics Card
+            If Software need Graphics card, please give the ram size:
           </button>
         </h5>
       </div>
@@ -105,63 +99,37 @@
         <div class="card-body">
           <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-2">
-              <label class="form-check-label" for="gpu">
-                Discrete graphic card needed?
-              </label>
-              <input class="form-check-input large" type="checkbox" value="false" id="gpu">
-
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-2">
               <label for="gpu_ram">Graphics card memory in GB:</label>
-              <input class="form-control" type="number" step="0.5" name="gpu_ram">
+              <input class="form-control" type="number" value="0" step="0.5" name="gpu_ram">
             </div>
           </div>
         </div>
       </div>
     </div>
-      <div class="card">
-        <div class="card-header" id="headingSix">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix"
-              aria-expanded="false" aria-controls="collapseSix">
-              Other
-            </button>
-          </h5>
-        </div>
-        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-3">
-                <label for="exampleFormControlTextarea1">Please add any additional requirements</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header" id="headingSeven">
-            <h5 class="mb-0">
-              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSeven"
-                aria-expanded="true" aria-controls="collapseSeven">
-                Copy a link from the web to an image to this software.
-              </button>
-            </h5>
-          </div>
-
-          <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven" data-parent="#accordionExample">
-            <div class="card-body">
-              <div class="col-12 col-md-6 col-lg-4">
-                <label for="img_source">Link to an image of the software:</label>
-                <input class="form-control" type="text" placeholder="Link to an image of the model" name="img_source">
-              </div>
-            </div>
+    <div class="card">
+      <div class="card-header" id="headingSeven">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSeven"
+            aria-expanded="true" aria-controls="collapseSeven">
+            Copy a link from the web to an image to this software.
+          </button>
+        </h5>
+      </div>
+      <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="col-12 col-md-6 col-lg-4">
+            <label for="img_source">Link to an image of the software:</label>
+            <input class="form-control" type="text" placeholder="Link to an image of the model" name="img_source"
+              required>
           </div>
         </div>
       </div>
-    <div class="Submit-btns" style="float: right;">
-      <button type="submit" class="btn btn-success" name="action">Add machine</button>
-      <button type="button" class="btn btn-danger" href="{{url_for('get_laptops')}}">Cancel</button>
     </div>
+  </div>
+  <div class="Submit-btns" style="float: right;">
+    <button type="submit" class="btn btn-success" name="action">Add machine</button>
+    <button type="button" class="btn btn-danger" href="{{url_for('get_laptops')}}">Cancel</button>
+  </div>
 
 </form>
 

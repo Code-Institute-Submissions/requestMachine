@@ -9,7 +9,7 @@
     <p>Please give all the informations of the machine to add to our database.</p>
 </div>
 <div class="container-fluid">
-    <form action="{{ url_for('insert_laptop') }}" method="POST">
+    <form class="needs-validation" action="{{ url_for('insert_laptop') }}" method="POST">
 
         <div class="accordion" id="accordionExample">
             <div class="card">
@@ -28,16 +28,11 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-6 col-lg-5">
                                 <label for="model_name">Model Name:</label>
-                                <input class="form-control" type="text" placeholder="Model Name" name="model_name">
+                                <input class="form-control" type="text" placeholder="Model Name" name="model_name" required>
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-5">
                                 <label for="model_number">Model Number:</label>
-                                <input class="form-control" type="text" placeholder="Model Number" name="model_number">
-                            </div>
-                            <div class="col-12 col-md-2 col-lg-2">
-                                <label for="usr">Screen Size:</label>
-                                <input class="form-control" type="number" step="0.1" placeholder="Screen size"
-                                    name="scree_size">
+                                <input class="form-control" type="text" placeholder="Model Number" name="model_number" required>
                             </div>
                         </div>
                     </div>
@@ -54,25 +49,19 @@
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-12 col-md-6 col-lg-6">
-                                <label for="proc_name">Processor Name:</label>
-                                <input class="form-control" type="text" placeholder="Processor Name" name="proc_name">
-                            </div>
-
                             <div class="col-12 col-md-2 col-lg-2">
                                 <label for="proc_gen">Generation:</label>
-                                <input class="form-control" type="number" placeholder="Generation" name="proc_gen">
+                                <input class="form-control" type="number" placeholder="Generation" name="proc_gen" required>
                             </div>
 
                             <div class="col-12 col-md-2 col-lg-2">
                                 <label for="proc_cores">Processor cores:</label>
-                                <input class="form-control" type="number" name="proc_cores">
+                                <input class="form-control" type="number" name="proc_cores" required>
                             </div>
 
                             <div class="col-12 col-md-2 col-lg-2">
                                 <label for="proc_max">Max frequency:</label>
-                                <input class="form-control" type="number" step="0.1" placeholder="MHz" name="proc_max">
+                                <input class="form-control" type="number" step="0.1" placeholder="MHz" name="proc_max" required>
                             </div>
                         </div>
                     </div>
@@ -93,11 +82,11 @@
                             <div class="col-12 col-md-6 col-lg-4">
                                 <label for="ram_size">Installed memory size:</label>
                                 <input class="form-control" type="number" placeholder="Memory installed in GB"
-                                    name="ram_size">
+                                    name="ram_size" required>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4">
                                 <label for="hard_drive">Hard Drive</label>
-                                <input class="form-control" type="number" placeholder="Hard drive in GB" name="hard_drive">
+                                <input class="form-control" type="number" placeholder="Hard drive in GB" name="hard_drive" required>
                             </div>
                         </div>
                     </div>
@@ -116,14 +105,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-12 col-md-6 col-lg-2">
-                                <label for="gpu_model">Graphics card model name:</label>
-                                <input class="form-control" type="text" placeholder="Graphics card model name"
-                                    name="gpu_model">
-                            </div>
-                            <div class="col-sm-12 col-md-6 col-lg-2">
                                 <label for="gpu_ram">Graphics card memory in GB:</label>
-                                <input class="form-control" type="number" step="0.5"
-                                    placeholder="Graphics card memory in GB" name="gpu_ram">
+                                <input class="form-control" type="number" step="0.5" value="0"
+                                    placeholder="GB" name="gpu_ram">
                             </div>
                         </div>
                     </div>
@@ -145,7 +129,7 @@
                         <div class="col-12 col-md-6 col-lg-4">
                             <label for="vga_model">Link to an image of the model:</label>
                             <input class="form-control" type="text" placeholder="Link to an image of the model"
-                                name="img_source">
+                                name="img_source" required>
                         </div>
                     </div>
                 </div>
