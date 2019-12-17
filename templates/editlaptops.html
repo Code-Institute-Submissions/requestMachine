@@ -4,4 +4,39 @@
     <a class="navbar-brand" href="{{url_for('add_laptop')}}">Add New Config</a>
     <a class="navbar-brand" href="{{url_for('get_laptops')}}">Back to Browse</a>
 </nav>
+
+{% for laptop in Laptops %}
+
+<div class="card mb-6">
+    
+    <div class="row no-gutters">
+        <col-0 class="col-md-1 col-lg-1"></col-0>
+        <div class="col-0 col-md-3 col-lg-3">
+        <img src="{{laptop.img_source}}" class="card-img" alt="Laptop image" style="max-height: 170px;max-width: 170px;">
+      </div>
+      
+      <div class="col-8 col-md-5 col-lg-5">
+        <div class="card-body">
+          <h5 class="card-title">{{laptop.model_name}}</h5>
+          <p class="card-text">Model Number: {{laptop.model_number}} </p>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="col-3 col-md-1 col-lg-1">
+            <button type="submit" class="btn btn-success" name="action" >Edit</button>
+        </div>
+      </div>
+      
+      <div class="card-body">
+        <div class="col-3 col-md-1 col-lg-1">
+            <button type="button" class="btn btn-danger" href="{{url_for('get_laptops')}}" >Delete</button>
+        </div>
+      </div>
+      <col-0 class="col-md-1 col-lg-1"></col-0>
+    </div>
+  </div>
+
+{% endfor %}
+
+
 {% endblock content %}
