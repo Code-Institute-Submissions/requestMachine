@@ -51,14 +51,20 @@ def edit_softwares():
     return render_template("editsoftwares.html")
     
 
-@app.route('/insert_laptop')
+@app.route('/insert_laptop', methods=['POST'])
 def insert_laptop():
     Laptops = mongo.db.laptops
     Laptops.insert_one(request.form.to_dict())
     return redirect(url_for('get_laptops'))
 
 
+@app.route('/insert_software', methods=['POST'])
+def insert_software():
+    mongo.db.softwares.insert_one(request.form.to_dict())
+    return redirect(url_for('get_softwares'))
+
+
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
+    app.run(host=os.environ.get('IP', '0.0.0.0'),
+            port=int(os.environ.get('PORT', '5000')),
             debug=True)
