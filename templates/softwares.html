@@ -6,6 +6,29 @@
   <a class="navbar-brand" href="{{url_for('get_laptops')}}">Laptops</a>
 </nav>
 {% for software in Softwares %}
-  {{software.software_name}}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="card" style="width: 18rem;">
+        <img src="{{software.img_source}}" class="card-img-top" alt="Software image">
+        <div class="card-body">
+          <h5 class="card-title">{{software.software_name}}</h5>
+          <h6 class="card-title">{{software.produced_by}}</h6>
+          <h6 class="card-title">Processor</h6>
+            <p>A {{software.proc_gen}}th gen processor with at least {{software.pro_cores}} cores and min {{software.proc_min}}GHz.</p>
+          <h6 class="card-title">Memory and Hard Drive</h6>
+          <p>{{ software.ram_size }}Gb memory</p>
+          <p>{{ software.hard_drive }}Gb Hard drive</p>
+          {% if software[8] > 0: %}
+            <h6 class="card-title">Graphics Memory</h6>
+            <p>Minimum {{software.gpu_ram}}Gb Graphics card</p>
+          {% endif %}
+          
+          <a data-toggle="collapse" href="#collapseExample">Laptop Datasheet</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endfor %}
 {% endblock content %}
