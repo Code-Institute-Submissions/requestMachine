@@ -64,6 +64,28 @@ def insert_software():
     return redirect(url_for('get_softwares'))
 
 
+@app.route('/edit_laptop/<laptop_id>')
+def edit_laptop(laptop_id):
+    return render_template('updatelaptop.html', laptop_id)
+
+@app.route('/update_laptop/<laptop_id>', methods=["POST"])
+def update_laptop(laptop_id):
+    laptop_upd =  mongo.db.laptops.find_one({"_id": ObjectId(laptop_id)})
+    laptop_upd.update( {'_id': ObjectId(laptop_id)},
+    {
+        'model_name':request.form.get('model_number'),
+        'model_number':request.form.get('model_number'),
+        'proc_gen': request.form.get('proc_gen'),
+        'proc_cores': request.form.get('proc_cores'),
+        'proc_max':request.form.get('proc_max'),
+        'ram_size':request.form.get('ram_size'),
+        'hard_drive':request.form.get('hard_drive'),
+        'gpu_ram':request.form.get('gpu_ram'),
+        'img_source':request.form.get('img_source')
+    })
+    return redirect(url_for('edit_laptops'))
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'),
             port=int(os.environ.get('PORT', '5000')),

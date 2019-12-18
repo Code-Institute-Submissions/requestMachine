@@ -1,0 +1,143 @@
+{% extends 'base.html'%} 
+
+{% block content %}
+<h3>Edit {{laptop.model_name}}</h3>
+<div class="wrapper" id="instructions">
+    <p>Please amend any necessary information</p>
+</div>
+<div class="container-fluid">
+    <form class="needs-validation" action="{{ url_for('update_laptop', laptop_id=laptop._id) }}" method="POST">
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            Machine Model Information
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-5">
+                                <label for="model_name">Model Name:</label>
+                                <input class="form-control" type="text" value="{{laptop.model_name}}" name="model_name" required>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-5">
+                                <label for="model_number">Model Number:</label>
+                                <input class="form-control" type="text" value="{{laptop.model_number}}" name="model_number" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Processor information
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                            <div class="col-12 col-md-2 col-lg-2">
+                                <label for="proc_gen">Generation:</label>
+                                <input class="form-control" type="number" value="{{laptop.proc_gen}}" name="proc_gen" required>
+                            </div>
+
+                            <div class="col-12 col-md-2 col-lg-2">
+                                <label for="proc_cores">Processor cores:</label>
+                                <input class="form-control" type="number" value="{{laptop.proc_cores}}" name="proc_cores" required>
+                            </div>
+
+                            <div class="col-12 col-md-2 col-lg-2">
+                                <label for="proc_max">Max frequency:</label>
+                                <input class="form-control" type="number" step="0.1" value="{{laptop.proc_max}}" name="proc_max" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Installed Memory and Hard Drive
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <label for="ram_size">Installed memory size:</label>
+                                <input class="form-control" type="number" value="{{laptop.ram_size}}"
+                                    name="ram_size" required>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <label for="hard_drive">Hard Drive</label>
+                                <input class="form-control" type="number" value="{{laptop.hard_drive}}" name="hard_drive" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingFour">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            If There is a discrete graphics card, please add details
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-2">
+                                <label for="gpu_ram">Graphics card memory in GB:</label>
+                                <input class="form-control" type="number" step="0.5" value="0"
+                                value="{{laptop.gpu_ram}}" name="gpu_ram">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingSeven">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSeven"
+                            aria-expanded="true" aria-controls="collapseSeven">
+                            Copy a link from the web to an image to this computer.
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven"
+                    data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <label for="vga_model">Link to an image of the model:</label>
+                            <input class="form-control" type="text" value="{{laptop.img_source}}"
+                                name="img_source" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="Submit-btns" style="float: right;">
+    <button type="submit" class="btn btn-success" name="action">Update machine</button>
+    <button type="button" class="btn btn-danger" href="{{ url_for('edit_laptops') }}">Cancel</button>
+</div>
+
+</form>
+</div>
+
+{% endblock %}
