@@ -14,7 +14,7 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/find_config')
 def find_config():
-    return render_template("findconfig.html")
+    return render_template("findconfig.html", Laptops=mongo.db.laptops.find(), Softwares=mongo.db.softwares.find())
 
 
 @app.route('/get_laptops')

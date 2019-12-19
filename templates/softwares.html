@@ -11,13 +11,11 @@
   {% for software in Softwares %}
     <div class="col-sm-12 col-md-6 col-lg-4">
       <div class="card" style="width: 18rem;">
-        <img src="{{software.img_source}}" class="card-img-top" alt="Software image missing">
+        <img src="{{software.img_source}}" class="card-img-top" alt="Software image missing" style="height: 200px; width: auto;">
         <div class="card-body">
           <h5 class="card-title">{{software.software_name}}</h5>
           <h6 class="card-title">{{software.produced_by}}</h6>
-          <h6 class="card-title">Processor</h6>
             <p>A {{software.proc_gen}}th gen processor with at least {{software.pro_cores}} cores and min {{software.proc_min}}GHz.</p>
-          <h6 class="card-title">Memory and Hard Drive</h6>
           <p>{{ software.ram_size }}Gb memory</p>
           <p>{{ software.hard_drive }}Gb Hard drive</p>
         </div>
