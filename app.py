@@ -64,15 +64,18 @@ def insert_software():
     return redirect(url_for('get_softwares'))
 
 
+
 @app.route('/edit_laptop/<laptop_id>')
 def edit_laptop(laptop_id):
-    return render_template('updatelaptop.html', laptop_id)
+    return render_template('updatelaptop.html', laptop=mongo.db.laptops.find_one({"_id": ObjectId(laptop_id)}))
+
+
 
 @app.route('/update_laptop/<laptop_id>', methods=["POST"])
 def update_laptop(laptop_id):
-    laptop_upd =  mongo.db.laptops.find_one({"_id": ObjectId(laptop_id)})
-    laptop_upd.update( {'_id': ObjectId(laptop_id)},
+    mongo.db.laptops.update( {"_id": ObjectId(laptop_id)},
     {
+        
         'model_name':request.form.get('model_number'),
         'model_number':request.form.get('model_number'),
         'proc_gen': request.form.get('proc_gen'),
@@ -83,6 +86,12 @@ def update_laptop(laptop_id):
         'gpu_ram':request.form.get('gpu_ram'),
         'img_source':request.form.get('img_source')
     })
+    return redirect(url_for('edit_laptops'))
+
+
+@app.route('/delete_laptop/<laptop_id>)')
+def delete_laptop(laptop_id):
+    mongo.db.laptops.remove( {"_id": ObjectId(laptop_id)})
     return redirect(url_for('edit_laptops'))
 
 
