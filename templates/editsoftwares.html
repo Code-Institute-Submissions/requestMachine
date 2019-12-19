@@ -4,4 +4,28 @@
         <a class="navbar-brand" href="{{url_for('add_software')}}">Add New Software</a>
         <a class="navbar-brand" href="{{url_for('get_softwares')}}">Back to Browse</a>
 </nav>
+{% for software in Softwares %}
+
+<div class="card mb-6">
+    
+    <div class="row no-gutters" style="max-height: 100px;">
+        <col-0 class="col-md-1 col-lg-1"></col-0>
+        <div class="col-0 col-md-3 col-lg-3">
+        <img src="{{software.img_source}}" class="card-img" alt="Software image" style="height: 100px;width: 100px;">
+      </div>
+      
+      <div class="col-8 col-md-5 col-lg-5">
+        <div class="card-body">
+          <h5 class="card-title">{{software.software_name}}</h5>
+          <p class="card-text">{{software.produced_by}} </p>
+        </div>
+      </div>
+      <a type="button" class="btn btn-warning" href="{{url_for('edit_software', software_id=software._id)}}" style="max-height: 40px; text-align: center; margin-right: 50px;">Edit</button>
+      <a type="button" class="btn btn-danger" href="{{url_for('delete_software', software_id=software._id)}}" style="max-height: 40px; text-align: center;">Delete</a>
+    </div>
+  </div>
+
+{% endfor %}
+
+
 {% endblock content %}

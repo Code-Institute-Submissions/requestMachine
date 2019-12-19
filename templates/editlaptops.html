@@ -7,12 +7,12 @@
 
 {% for laptop in Laptops %}
 
-<div class="card mb-6">
+<div class="card mb-6" style="max-height: 100px;">
     
     <div class="row no-gutters">
         <col-0 class="col-md-1 col-lg-1"></col-0>
         <div class="col-0 col-md-3 col-lg-3">
-        <img src="{{laptop.img_source}}" class="card-img" alt="Laptop image" style="max-height: 170px;max-width: 170px;">
+        <img src="{{laptop.img_source}}" class="card-img" alt="Laptop image" style="max-height: 100px;max-width: 100px;">
       </div>
       
       <div class="col-8 col-md-5 col-lg-5">
@@ -21,8 +21,8 @@
           <p class="card-text">Model Number: {{laptop.model_number}} </p>
         </div>
       </div>
-      <a type="button" class="btn btn-warning" href="{{url_for('edit_laptop', laptop_id=laptop._id)}}">Edit</button>
-      <a type="button" class="btn btn-danger" href="{{url_for('delete_laptop', laptop_id=laptop._id)}}" >Delete</a>
+      <a type="button" class="btn btn-warning" href="{{url_for('edit_laptop', laptop_id=laptop._id)}}" style="max-height: 40px; text-align: center; margin-right: 50px;">Edit</button>
+      <a type="button" class="btn btn-danger" href="{{url_for('delete_laptop', laptop_id=laptop._id)}}" style="max-height: 40px; text-align: center;">Delete</a>
     </div>
   </div>
 

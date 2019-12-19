@@ -55,13 +55,13 @@ def edit_softwares():
 def insert_laptop():
     Laptops = mongo.db.laptops
     Laptops.insert_one(request.form.to_dict())
-    return redirect(url_for('get_laptops'))
+    return redirect(url_for('edit_laptops'))
 
 
 @app.route('/insert_software', methods=['POST'])
 def insert_software():
     mongo.db.softwares.insert_one(request.form.to_dict())
-    return redirect(url_for('get_softwares'))
+    return redirect(url_for('edit_softwares'))
 
 
 
@@ -76,7 +76,7 @@ def update_laptop(laptop_id):
     mongo.db.laptops.update( {"_id": ObjectId(laptop_id)},
     {
         
-        'model_name':request.form.get('model_number'),
+        'model_name':request.form.get('model_name'),
         'model_number':request.form.get('model_number'),
         'proc_gen': request.form.get('proc_gen'),
         'proc_cores': request.form.get('proc_cores'),
@@ -93,6 +93,37 @@ def update_laptop(laptop_id):
 def delete_laptop(laptop_id):
     mongo.db.laptops.remove( {"_id": ObjectId(laptop_id)})
     return redirect(url_for('edit_laptops'))
+
+
+@app.route('/edit_software/<software_id>')
+def edit_software(software_id):
+    return render_template('updatesoftware.html', software=mongo.db.softwares.find_one({"_id": ObjectId(software_id)}))
+
+
+
+@app.route('/update_software/<software_id>', methods=["POST"])
+def update_software(software_id):
+    mongo.db.software.update( {"_id": ObjectId(software_id)},
+    {
+        
+        'software_name':request.form.get('software_name'),
+        'produced_by':request.form.get('produced_by'),
+        'proc_gen': request.form.get('proc_gen'),
+        'proc_cores': request.form.get('proc_cores'),
+        'proc_min':request.form.get('proc_min'),
+        'ram_size':request.form.get('ram_size'),
+        'hard_drive':request.form.get('hard_drive'),
+        'gpu_ram':request.form.get('gpu_ram'),
+        'img_source':request.form.get('img_source')
+    })
+    return redirect(url_for('edit_softwares'))
+
+
+@app.route('/delete_software/<software_id>)')
+def delete_software(software_id):
+    mongo.db.softwares.remove( {"_id": ObjectId(software_id)})
+    return redirect(url_for('edit_softwares'))
+
 
 
 if __name__ == '__main__':
