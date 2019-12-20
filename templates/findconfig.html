@@ -13,28 +13,31 @@
       <div class="row">
         {% for software in Softwares %}
         <div class="col col-md-4 col-lg-3">
-          <div class="card" style="width: 18rem;">
-            <img src="{{software.img_source}}" class="card-img-top" alt="Laptop image missing"
-              style="height: 200px; width: auto;">
-            <div class="card-body">
-              <h5 class="card-title">{{software.software_name}}</h5>
+          <form action="{{url_for('add_software_to_mysoftwares', software_id=software._id)}}" method="post">
+            <button class="card" name="action" style="width: 18rem;">
+              <img src="{{software.img_source}}" class="card-img-top" alt="Laptop image missing"
+                style="height: 200px; width: auto;">
+              <div class="card-body">
+                <h5 class="card-title">{{software.software_name}}</h5>
+              </div>
             </div>
-          </div>
+          </button>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
-    </div>
-    <div class="col-6 col-md-6 col-lg-4">
-      <div class="row">
-        {% for laptop in Laptops %}
-        <div class="col col-md-6 col-lg-6">
-          <div class="card" style="width: 18rem;">
-            <img src="{{laptop.img_source}}" class="card-img-top" alt="Laptop image missing"
-              style="height: 200px; width: auto;">
-            <div class="card-body">
-              <h5 class="card-title">{{laptop.model_name}}</h5>
+      <div class="col-6 col-md-6 col-lg-4">
+        <div class="row">
+          {% for laptop in Laptops %}
+          <div class="col col-md-6 col-lg-6">
+            <div class="card" style="width: 18rem;">
+              <img src="{{laptop.img_source}}" class="card-img-top" alt="Laptop image missing"
+                style="height: 200px; width: auto;">
+              <div class="card-body">
+                <h5 class="card-title">{{laptop.model_name}}</h5>
+              </div>
             </div>
-          </div>
+  
+          </form>
         </div>
         {% endfor %}
       </div>

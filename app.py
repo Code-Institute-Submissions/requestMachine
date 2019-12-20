@@ -17,6 +17,21 @@ def find_config():
     return render_template("findconfig.html", Laptops=mongo.db.laptops.find(), Softwares=mongo.db.softwares.find())
 
 
+
+@app.route('/add_software_to_mysoftwares/<software_id>', methods=["POST"])
+def add_software_to_mysoftwares(software_id):
+    mongo.db.mysoftwares.insert_one({"ref_num":software_id})
+    return render_template("findconfig.html", Laptops=mongo.db.laptops.find(), Softwares=mongo.db.softwares.find())
+
+
+@app.route('/remove_software_from_mysoftwares/<software_id>')
+def remove_software_from_mysoftwares(software_id):
+    mongo.db.mysoftwares.remove( {"_id": ObjectId(software_id)})
+    return render_template("findconfig.html", Laptops=mongo.db.laptops.find(), Softwares=mongo.db.softwares.find())
+
+
+
+
 @app.route('/get_laptops')
 def get_laptops():
     return render_template("laptops.html", Laptops=mongo.db.laptops.find())
