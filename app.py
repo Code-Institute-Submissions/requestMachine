@@ -17,16 +17,44 @@ def find_config():
     return render_template("findconfig.html", Laptops=mongo.db.laptops.find(), Softwares=mongo.db.softwares.find())
 
 
-
-@app.route('/add_software_to_mysoftwares/<software_id>', methods=["POST"])
+@app.route('/add_software_to_mysoftwares/<software_id>')
 def add_software_to_mysoftwares(software_id):
-    mongo.db.mysoftwares.insert_one({"ref_num":software_id})
+    software=mongo.db.softwares.find({"_id":ObjectId(software_id)})
+    mongo.db.softwares.update({"_id":ObjectId(software_id)},
+        {
+        
+        'software_name':software.software_name,
+        'produced_by':software.produced_by,
+        'proc_gen': software.proc_gen,
+        'proc_cores': software.proc_cores,
+        'proc_min':software.proc_min,
+        'ram_size':software.ram_size,
+        'hard_drive':software.hard_drive,
+        'gpu_ram':software.gpu_ram,
+        'img_source':software.img_source,
+        'chosen':True
+    })
     return render_template("findconfig.html", Laptops=mongo.db.laptops.find(), Softwares=mongo.db.softwares.find())
+
 
 
 @app.route('/remove_software_from_mysoftwares/<software_id>')
 def remove_software_from_mysoftwares(software_id):
-    mongo.db.mysoftwares.remove( {"_id": ObjectId(software_id)})
+    software=mongo.db.softwares.find({"_id":ObjectId(software_id)})
+    mongo.db.softwares.update({"_id":ObjectId(software_id)},
+        {
+        
+        'software_name':software.software_name,
+        'produced_by':software.produced_by,
+        'proc_gen': software.proc_gen,
+        'proc_cores': software.proc_cores,
+        'proc_min':software.proc_min,
+        'ram_size':software.ram_size,
+        'hard_drive':software.hard_drive,
+        'gpu_ram':software.gpu_ram,
+        'img_source':software.img_source,
+        'chosen':False
+    })
     return render_template("findconfig.html", Laptops=mongo.db.laptops.find(), Softwares=mongo.db.softwares.find())
 
 
