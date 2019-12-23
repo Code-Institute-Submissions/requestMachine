@@ -18,43 +18,15 @@ def find_config():
 
 
 @app.route('/add_software_to_mysoftwares/<software_id>')
-def add_software_to_mysoftwares(software_id):
-    software=mongo.db.softwares.find({"_id":ObjectId(software_id)})
-    mongo.db.softwares.update({"_id":ObjectId(software_id)},
-        {
-        
-        'software_name':software.software_name,
-        'produced_by':software.produced_by,
-        'proc_gen': software.proc_gen,
-        'proc_cores': software.proc_cores,
-        'proc_min':software.proc_min,
-        'ram_size':software.ram_size,
-        'hard_drive':software.hard_drive,
-        'gpu_ram':software.gpu_ram,
-        'img_source':software.img_source,
-        'chosen':True
-    })
+def add_software_to_mysoftwares(software_id):  
+    mongo.db.softwares.update({"_id": ObjectId(software_id)}, {'$set': {"chosen": True}}, multi=False) 
     return render_template("findconfig.html", Laptops=mongo.db.laptops.find(), Softwares=mongo.db.softwares.find())
 
 
 
 @app.route('/remove_software_from_mysoftwares/<software_id>')
 def remove_software_from_mysoftwares(software_id):
-    software=mongo.db.softwares.find({"_id":ObjectId(software_id)})
-    mongo.db.softwares.update({"_id":ObjectId(software_id)},
-        {
-        
-        'software_name':software.software_name,
-        'produced_by':software.produced_by,
-        'proc_gen': software.proc_gen,
-        'proc_cores': software.proc_cores,
-        'proc_min':software.proc_min,
-        'ram_size':software.ram_size,
-        'hard_drive':software.hard_drive,
-        'gpu_ram':software.gpu_ram,
-        'img_source':software.img_source,
-        'chosen':False
-    })
+    mongo.db.softwares.update({"_id": ObjectId(software_id)}, {'$set': {"chosen": False}}, multi=False) 
     return render_template("findconfig.html", Laptops=mongo.db.laptops.find(), Softwares=mongo.db.softwares.find())
 
 
@@ -127,7 +99,8 @@ def update_laptop(laptop_id):
         'ram_size':request.form.get('ram_size'),
         'hard_drive':request.form.get('hard_drive'),
         'gpu_ram':request.form.get('gpu_ram'),
-        'img_source':request.form.get('img_source')
+        'img_source':request.form.get('img_source'),
+        'in_basket':False
     })
     return redirect(url_for('edit_laptops'))
 
@@ -157,7 +130,8 @@ def update_software(software_id):
         'ram_size':request.form.get('ram_size'),
         'hard_drive':request.form.get('hard_drive'),
         'gpu_ram':request.form.get('gpu_ram'),
-        'img_source':request.form.get('img_source')
+        'img_source':request.form.get('img_source'),
+        "chosen":False
     })
     return redirect(url_for('edit_softwares'))
 
