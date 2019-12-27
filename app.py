@@ -25,7 +25,7 @@ def add_software_to_mysoftwares(software_id):
 
 @app.route('/compare_attributes')
 def compare_attributes():
-    Software=mongo.db.softwares.find({"chosen": True})
+    Softwares=mongo.db.softwares.find({"chosen": True})
     Laptops=mongo.db.laptops.find()
     for laptop in Laptops:
         mongo.db.laptops.update({"_id": ObjectId(laptop["_id"])}, {'$set': {"in_basket": True}}, multi=False)
