@@ -83,14 +83,37 @@ def edit_softwares():
 
 @app.route('/insert_laptop', methods=['POST'])
 def insert_laptop():
-    Laptops = mongo.db.laptops
-    Laptops.insert_one(request.form.to_dict())
+    mongo.db.laptops.insert({
+        
+        'model_name':request.form.get('model_name'),
+        'model_number':request.form.get('model_number'),
+        'proc_gen': int(request.form.get('proc_gen')),
+        'proc_cores': int(request.form.get('proc_cores')),
+        'proc_max':float(request.form.get('proc_max')),
+        'ram_size':float(request.form.get('ram_size')),
+        'hard_drive':float(request.form.get('hard_drive')),
+        'gpu_ram':float(request.form.get('gpu_ram')),
+        'img_source':request.form.get('img_source'),
+        'in_basket':False
+    })
     return redirect(url_for('edit_laptops'))
 
 
 @app.route('/insert_software', methods=['POST'])
 def insert_software():
-    mongo.db.softwares.insert_one(request.form.to_dict())
+    mongo.db.softwares.insert({
+        
+        'software_name':request.form.get('software_name'),
+        'produced_by':request.form.get('produced_by'),
+        'proc_gen': int(request.form.get('proc_gen')),
+        'proc_cores': int(request.form.get('proc_cores')),
+        'proc_min':float(request.form.get('proc_min')),
+        'ram_size':float(request.form.get('ram_size')),
+        'hard_drive':float(request.form.get('hard_drive')),
+        'gpu_ram':float(request.form.get('gpu_ram')),
+        'img_source':request.form.get('img_source'),
+        'chosen':False
+    })
     return redirect(url_for('edit_softwares'))
 
 
