@@ -30,15 +30,16 @@ def compare_attributes():
     for laptop in Laptops:
         mongo.db.laptops.update({"_id": ObjectId(laptop["_id"])}, {'$set': {"in_basket": True}}, multi=False)
     for software in Softwares:
+        Laptops=mongo.db.laptops.find()
         for laptop in Laptops:
             if laptop["in_basket"]:
                 if software["proc_gen"] > laptop["proc_gen"] or software["proc_cores"] > laptop["proc_cores"] or software["proc_min"] > laptop["proc_max"] or software["ram_size"] > laptop["ram_size"] or software["hard_drive"] > laptop["hard_drive"] or software["gpu_ram"] > laptop["gpu_ram"]:
                     mongo.db.laptops.update({"_id": ObjectId(laptop["_id"])}, {'$set': {"in_basket": False}}, multi=False)
-    return render_template("findconfig.html", Laptops=mongo.db.laptops.find(), Softwares=mongo.db.softwares.find())
+    return render_template("findconfig.html", Laptops=mongo.db.laptops.find({"in_basket":True}), Softwares=mongo.db.softwares.find())
 
 
 
-@app.route('/remove_software_from_mysoftwares')
+@app.route('/remove_software_from_mysoftwares/<software_id>')
 def remove_software_from_mysoftwares(software_id):
     mongo.db.softwares.update({"_id": ObjectId(software_id)}, {'$set': {"chosen": False}}, multi=False)
     return redirect(url_for('compare_attributes'))
@@ -107,12 +108,12 @@ def update_laptop(laptop_id):
         
         'model_name':request.form.get('model_name'),
         'model_number':request.form.get('model_number'),
-        'proc_gen': request.form.get('proc_gen'),
-        'proc_cores': request.form.get('proc_cores'),
-        'proc_max':request.form.get('proc_max'),
-        'ram_size':request.form.get('ram_size'),
-        'hard_drive':request.form.get('hard_drive'),
-        'gpu_ram':request.form.get('gpu_ram'),
+        'proc_gen': int(request.form.get('proc_gen')),
+        'proc_cores': int(request.form.get('proc_cores')),
+        'proc_max':float(request.form.get('proc_max')),
+        'ram_size':float(request.form.get('ram_size')),
+        'hard_drive':float(request.form.get('hard_drive')),
+        'gpu_ram':float(request.form.get('gpu_ram')),
         'img_source':request.form.get('img_source'),
         'in_basket':False
     })
@@ -133,19 +134,19 @@ def edit_software(software_id):
 
 @app.route('/update_software/<software_id>', methods=["POST"])
 def update_software(software_id):
-    mongo.db.software.update( {"_id": ObjectId(software_id)},
+    mongo.db.softwares.update( {"_id": ObjectId(software_id)},
     {
         
         'software_name':request.form.get('software_name'),
         'produced_by':request.form.get('produced_by'),
-        'proc_gen': request.form.get('proc_gen'),
-        'proc_cores': request.form.get('proc_cores'),
-        'proc_min':request.form.get('proc_min'),
-        'ram_size':request.form.get('ram_size'),
-        'hard_drive':request.form.get('hard_drive'),
-        'gpu_ram':request.form.get('gpu_ram'),
+        'proc_gen': int(request.form.get('proc_gen')),
+        'proc_cores': int(request.form.get('proc_cores')),
+        'proc_min':float(request.form.get('proc_min')),
+        'ram_size':float(request.form.get('ram_size')),
+        'hard_drive':float(request.form.get('hard_drive')),
+        'gpu_ram':float(request.form.get('gpu_ram')),
         'img_source':request.form.get('img_source'),
-        "chosen":False
+        'chosen':False
     })
     return redirect(url_for('edit_softwares'))
 
