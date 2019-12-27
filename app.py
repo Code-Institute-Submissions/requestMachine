@@ -20,25 +20,28 @@ def find_config():
 @app.route('/add_software_to_mysoftwares/<software_id>')
 def add_software_to_mysoftwares(software_id):
     mongo.db.softwares.update({"_id": ObjectId(software_id)}, {'$set': {"chosen": True}}, multi=False)
-    return redirect(url_for('compare_attributes', software_id=software_id))
+    return redirect(url_for('compare_attributes'))
 
 
-@app.route('/compare_attributes/<software_id>')
-def compare_attributes(software_id):
-    software=mongo.db.softwares.find({"_id": ObjectId(software_id)})
+@app.route('/compare_attributes')
+def compare_attributes():
+    Software=mongo.db.softwares.find({"chosen": True})
     Laptops=mongo.db.laptops.find()
     for laptop in Laptops:
-        if laptop["in_basket"]:
-            if software["proc_gen"] > laptop["proc_gen"] or software["proc_cores"] > laptop["proc_cores"] or software["proc_min"] > laptop["proc_max"] or software["ram_size"] > laptop["ram_size"] or software["hard_drive"] > laptop["hard_drive"] or software["gpu_ram"] > laptop["gpu_ram"]:
-                mongo.db.laptops.update({"_id": ObjectId(laptop["_id"])}, {'$set': {"in_basket": False}}, multi=False)
+        mongo.db.laptops.update({"_id": ObjectId(laptop["_id"])}, {'$set': {"in_basket": True}}, multi=False)
+    for software in Softwares:
+            for laptop in Laptops:
+                if laptop["in_basket"]:
+                    if software["proc_gen"] > laptop["proc_gen"] or software["proc_cores"] > laptop["proc_cores"] or software["proc_min"] > laptop["proc_max"] or software["ram_size"] > laptop["ram_size"] or software["hard_drive"] > laptop["hard_drive"] or software["gpu_ram"] > laptop["gpu_ram"]:
+                        mongo.db.laptops.update({"_id": ObjectId(laptop["_id"])}, {'$set': {"in_basket": False}}, multi=False)
     return render_template("findconfig.html", Laptops=mongo.db.laptops.find(), Softwares=mongo.db.softwares.find())
 
 
 
-@app.route('/remove_software_from_mysoftwares/<software_id>')
+@app.route('/remove_software_from_mysoftwares')
 def remove_software_from_mysoftwares(software_id):
     mongo.db.softwares.update({"_id": ObjectId(software_id)}, {'$set': {"chosen": False}}, multi=False)
-    return render_template("findconfig.html", Laptops=mongo.db.laptops.find(), Softwares=mongo.db.softwares.find())
+    return redirect(url_for('compare_attributes'))
 
 
 
