@@ -30,10 +30,10 @@ def compare_attributes():
     for laptop in Laptops:
         mongo.db.laptops.update({"_id": ObjectId(laptop["_id"])}, {'$set': {"in_basket": True}}, multi=False)
     for software in Softwares:
-            for laptop in Laptops:
-                if laptop["in_basket"]:
-                    if software["proc_gen"] > laptop["proc_gen"] or software["proc_cores"] > laptop["proc_cores"] or software["proc_min"] > laptop["proc_max"] or software["ram_size"] > laptop["ram_size"] or software["hard_drive"] > laptop["hard_drive"] or software["gpu_ram"] > laptop["gpu_ram"]:
-                        mongo.db.laptops.update({"_id": ObjectId(laptop["_id"])}, {'$set': {"in_basket": False}}, multi=False)
+        for laptop in Laptops:
+            if laptop["in_basket"]:
+                if software["proc_gen"] > laptop["proc_gen"] or software["proc_cores"] > laptop["proc_cores"] or software["proc_min"] > laptop["proc_max"] or software["ram_size"] > laptop["ram_size"] or software["hard_drive"] > laptop["hard_drive"] or software["gpu_ram"] > laptop["gpu_ram"]:
+                    mongo.db.laptops.update({"_id": ObjectId(laptop["_id"])}, {'$set': {"in_basket": False}}, multi=False)
     return render_template("findconfig.html", Laptops=mongo.db.laptops.find(), Softwares=mongo.db.softwares.find())
 
 
