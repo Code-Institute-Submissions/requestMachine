@@ -12,7 +12,61 @@ The goal was not to provide a cross platform tool to all devices, but to show, h
 
 The split navigation bars show the main difference between the parts of the tool given to the administrators and the users.
 
-### Initial design wire-frames / mock-ups:
+### Database structure
+
+The database name: requestMachineDB
+
+Collections: laptops, softwares
+
+laptops documents contains the following fields with description and type:
+
+(_id) the object id -string
+
+(model_name) the model name -string
+
+(model_number) the model number -string
+
+(proc_gen) what generation the processor is -integer
+
+(proc_cores) how many processors in the CPU -integer
+
+(proc_max) what is the max frequency the CPU capable of -double
+
+(ram_size) the installed ram -double
+
+(hard_drive) the installed hard drive -double
+
+(gpu_ram) the installed graphics memory -double
+
+(img) the image link -string
+
+(in_basket) shows if the laptop is in the basket so it is capable to run the chosen software -boolean
+
+
+
+The softwares documents contains the following fields with description and type:
+
+(_id) the object id -string
+
+(software_name) the name of the software -string
+
+(produced_by) the publisher of the software -string
+
+(proc_gen) what generation the processor is needed -integer
+
+(proc_cores) how many processors in the CPU needed-integer
+
+(proc_min) what is the min frequency the CPU need to be capable of to run-double
+
+(ram_size) the size of ram needed -double
+
+(hard_drive) the size of hard drive needed -double
+
+(gpu_ram) the installed graphics memory needed -double
+
+(img) the image link -string
+
+(chosen) shows if the software is chosen to be considered running on the machines -boolean
 
 
 
@@ -60,7 +114,7 @@ To give the option to select the laptop and to communicate this in any way, such
 
 ### Features left to implement
 
-The search was left to implement and during testing it was clear that the user is not aware of the selected software, so need more feedback to the user. This can be a list of selected software or colour scheme on the cards, disappearing Add/Remove based on activity.
+The search option was left to implement and during testing it was clear that the user is not aware of the selected software, so need more feedback to the user. This can be a list of selected software or colour scheme on the cards, disappearing Add/Remove based on activity.
 
 Better UI both layout and to be available on mobile. 
 
@@ -72,7 +126,7 @@ Better UI both layout and to be available on mobile.
 
 [Git](https://git-scm.com/) : For version control.
 
-[Github](https://github.com/) : To publish the website .
+[Github](https://github.com/) : To publish the website's source code
 
 [VsCode](https://code.visualstudio.com/) : For code editing.
 
@@ -88,6 +142,8 @@ Better UI both layout and to be available on mobile.
 
 [MongoDB](https://www.mongodb.com/) Database
 
+[Heroku](https://www.heroku.com/) To Deploy the application
+
 ## Testing
 
 Tests ran by users to find any problems or to suggests improvements. 
@@ -98,13 +154,20 @@ To test connection and CRUD, python shell and print function have been used and 
 
 ## Deployment
 
+The project has been deployed and hosted on [Heroku](https://best-config.herokuapp.com/) in the following way:
 
+Git was used for version control, and the source code is located on a Github [repository](https://github.com/varroz56/requestMachine). 
+
+On Heroku dashboard a new app has been created called best-config. The [tutorial](https://devcenter.heroku.com/articles/creating-apps#creating-a-named-app) shows how to create an app. Europe server delivers the hosting. 
+
+Heroku offers the option to being integrated to a Github repository, so after authorisation and linked in the the development repository, the application was ready to be deployed with one click. 
+
+After deployment, Heroku offers a [link](https://best-config.herokuapp.com/) to the hosted website.
+
+ 
 
 ## Credits
 
 ### Content
 
-### Media
-
-
-### Acknowledgement
+Any images or written information used on the site is linked or published by other websites and any pictures have been used is only for development purposes and to show an easy option to fill in the form. No information or media is owned by the developer, and is not responsible to the uploaded content.
