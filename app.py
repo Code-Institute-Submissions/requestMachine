@@ -14,6 +14,9 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/find_config')
 def find_config():
+    Softwares=mongo.db.softwares.find()
+    for software in Softwares:
+        mongo.db.softwares.update({"_id": ObjectId(software["_id"])}, {'$set': {"chosen": True}}, multi=False)
     return render_template("findconfig.html", Laptops=mongo.db.laptops.find(), Softwares=mongo.db.softwares.find())
 
 
