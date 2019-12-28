@@ -37,22 +37,32 @@ User A wants to findt the configuration for his/her software selection. The site
 User B can quickly add and remove as many softwares ans he/she wants from the selection, by clicking on the add/remove button located on every software's info card.
 
 After selecting even one software, the laptop list on the right side going to be updated regarding the minimum requirements of the software and the ability of the laptop to run it. This gives the user a real time update and the ability to make decision based onselecting or deselcting just one software.
- 
+
 ## Features
 
 ### Existing Features
+The application is capable to Create, Read, Update, and Delete from mongo DB, giving the user a clear and easy to use user interface.
+Every form gives feedback to the user as every field is mandatory to fill in, and the type of fields give the user the only option e.g if the field is a number, the user can not give a string. 
 
+The pictures are located on different servers depending on which user where and what can find to add to the form, as the user is only asked to provide a link to the picture on a server. This gives the user an easy way to quickly find it and present on the data form. (However, The user or the site owner does not own the pictures so any pictures trademarks presented on the site is solely used as a bulk practice and to represent the aim and shows the way the developer wants the site to be used.)
 
-#### Not area related features
+When the user wants to update an existing record, the placeholder of the form is the already given information and the user can only amend as less fields as he/she wants, and see the full datasheet as it will be after the update.
 
+By clicking on the Add/Remove buttons, the software datasheets are checked against the laptops information to calculate which laptop is capable to run the selected software, and the site shows the updated list so the user only sees after any selection the laptops are capable to run the selected software.
 
 #### Future ideas
 
+In the future there would be a login page for authentication and to be able to save selections for users. In this way the restrictions for editing the lists would be easely implemented as the buttons would not be seen if the user has no access to these options(also need to have only read access to the db).
 
+Compare products based on more information. The aim was to give an idea how it would happen and not to give precise decision at the moment.
+
+To give the option to select the laptop and to communicate this in any way, such as email to the user or to others with a premade form to show the software selection and laptop options
 
 ### Features left to implement
 
+The search was left to implement and during testing it was clear that the user is not aware of the selected software, so need more feedback to the user. This can be a list of selected software or colour scheme on the cards, disappearing Add/Remove based on activity.
 
+Better layout to be able to make this selection on cross platform.
 
 ## Technologies Used
 
