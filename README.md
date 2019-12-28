@@ -164,6 +164,10 @@ Heroku offers the option to being integrated to a Github repository, so after au
 
 After deployment, Heroku offers a [link](https://best-config.herokuapp.com/) to the hosted website.
 
+
+
+Lastly the MONGO_URI have been taken out and set on the local machine .bashrc file and used os.getenv to access it from the app, unfortunately after deployment had error message and could not start the app as it did not access the uri. On local WSGI server the app was running with the uri hidden. Because of this the username and password has been reinstated into the code.
+
  
 
 ## Credits
