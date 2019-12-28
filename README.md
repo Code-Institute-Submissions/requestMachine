@@ -62,14 +62,39 @@ To give the option to select the laptop and to communicate this in any way, such
 
 The search was left to implement and during testing it was clear that the user is not aware of the selected software, so need more feedback to the user. This can be a list of selected software or colour scheme on the cards, disappearing Add/Remove based on activity.
 
-Better layout to be able to make this selection on cross platform.
+Better UI both layout and to be available on mobile. 
 
 ## Technologies Used
 
+[Html](https://whatwg.org/) : To display the document in the web browser
 
+[CSS](https://www.w3.org/Style/CSS/Overview.en.html) : To customise the document layout.
+
+[Git](https://git-scm.com/) : For version control.
+
+[Github](https://github.com/) : To publish the website .
+
+[VsCode](https://code.visualstudio.com/) : For code editing.
+
+[Libreoffice](https://www.libreoffice.org/): For creating initial planes.
+
+[Typora](https://typora.io/): To edit the markdown files.
+
+[python](https://www.python.org/) Main coding and data handling language
+
+[pymongo](https://api.mongodb.com/python/current/) To communicate to the database
+
+[Flask]([WSGI](https://wsgi.readthedocs.io/) ) Web application framework
+
+[MongoDB](https://www.mongodb.com/) Database
 
 ## Testing
 
+Tests ran by users to find any problems or to suggests improvements. 
+
+After the tests, it turned out, that the previous user's selection kept in the db and to fix this, every time the user reaches the find config or find best config pages, the db reset the chosen attribute to all software.
+
+To test connection and CRUD, python shell and print function have been used and checked against the db. 
 
 ## Deployment
 
