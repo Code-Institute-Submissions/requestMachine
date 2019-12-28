@@ -17,9 +17,27 @@ The split navigation bars show the main difference between the parts of the tool
 
 
 ### User stories
+Later on the features it is going to be discussed, that the application has an administrator and a enduser part, those are not restricted at this point, however the user stories going to give an overview to the options as the user parts. The admin tools will be showed in the administrator part, the catalogue and software choosing part will be discussed in the everyday user part, as the administrator would use the catalogue part as an everyday user.
+#### User stories as an administrator
+The application does not provide saved selection or state, so every time the user wants to see the catalogue, he/she will do this as a new user.
+
+User A wants to add a new software/laptop to the catalogue. He/she can do this by clicking on the top navigation bar to the edit software/laptop  list. This will bring the user to a simplified list of softwares/laptops with name and producer/model name and model number of the software/laptop. User can click on the add new software/laptop button, and this will bring the user to a form where the user can add the software's/laptop's details. If the user is happy with the form to be submitted, the user needs to click on the add button. This will submit the form and add the new software/laptop to the catalogue.
+
+User A is not happy with the form to be submitted, in this case user needs to click on any buttons except the submit button, so the form not going to be submitted, a cancel button located next to the add button.
+
+User B wants to delete from the catalogue. He/she can click on the edit list buttons and on the next page where the list of product shows, the user can click on the delete button located next to the edit button. This will delete the product from the list.
+
+User C wants to update a product. He/she can do this by clicking on the edit list button and then click on the edit button located next to the product short description. This will bring the user to the form page where the user amend the information. User can click on update to update the product information or any other buttons to cancel this operation.
 
 
+#### User stories as a everyday user
 
+User A wants to findt the configuration for his/her software selection. The site navigates to this section by default. If the user navigates to either the software or laptop catalogue, he/she can navigate back to the selection by clicking the find best config link located at the top left corner or the best config link on the middle of the navigation bar.
+
+User B can quickly add and remove as many softwares ans he/she wants from the selection, by clicking on the add/remove button located on every software's info card.
+
+After selecting even one software, the laptop list on the right side going to be updated regarding the minimum requirements of the software and the ability of the laptop to run it. This gives the user a real time update and the ability to make decision based onselecting or deselcting just one software.
+ 
 ## Features
 
 ### Existing Features
